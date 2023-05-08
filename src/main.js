@@ -3,6 +3,8 @@ import {Viewport} from "../modules/viewport.js"
 import {BIEM} from "../modules/biem.js"
 import {Box} from "../modules/box.js"
 
+alert("this is a test")
+
 let viewport = new Viewport("viewport", null); // red 0xff0808
 let programmer = new Programmer("programmer");
 let biem = new BIEM("biem");
