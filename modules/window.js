@@ -24,7 +24,13 @@ class Window {
   changeWindowSize(width, height) {
     this.window.width = width;
     this.window.height = height;
-  }
+  
+    const backgroundElements = document.querySelectorAll("#background");
+    backgroundElements.forEach((element) => {
+      element.style.width = `${width}px`;
+      element.style.height = `${height}px`;
+    });
+  }  
 
   // function to move a window
   moveWindow(left, top) {

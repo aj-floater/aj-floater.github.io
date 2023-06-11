@@ -35,27 +35,27 @@ function hideBox(id){
 }
 
 function uploadFiles() {
-  var form = document.getElementById("uploadForm");
-  var formData = new FormData(form);
+  // var form = document.getElementById("uploadForm");
+  // var formData = new FormData(form);
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'php/upload.php', true);
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      // console.log(xhr.responseText);
-      // var response = JSON.parse(xhr.responseText);
-      var response = xhr.responseText;
-      // Display error messages as alerts
-      let upload_error_div = document.getElementById('upload-error');
-      upload_error_div.textContent = response;
-      // alert(errors.join("\n"));
-      // Files uploaded successfully!
-      updateAllDirectoryListings();
-    } else {
-      alert('Something went wrong while uploading the files.');
-    }
-  };
-  xhr.send(formData);
+  // var xhr = new XMLHttpRequest();
+  // xhr.open('POST', 'php/upload.php', true);
+  // xhr.onload = function () {
+  //   if (xhr.status === 200) {
+  //     // console.log(xhr.responseText);
+  //     // var response = JSON.parse(xhr.responseText);
+  //     var response = xhr.responseText;
+  //     // Display error messages as alerts
+  //     let upload_error_div = document.getElementById('upload-error');
+  //     upload_error_div.textContent = response;
+  //     // alert(errors.join("\n"));
+  //     // Files uploaded successfully!
+  //     updateAllDirectoryListings();
+  //   } else {
+  //     alert('Something went wrong while uploading the files.');
+  //   }
+  // };
+  // xhr.send(formData);
 }
 
 function updateImportDirectoryListing() {
@@ -126,9 +126,9 @@ if (robotRefreshButton) {
 }
 
 const uploadButton = document.getElementById('upload');
-// if (uploadButton) {
+if (uploadButton) {
   uploadButton.addEventListener('click', uploadFiles);
-// }
+}
 
 const chooseRobotBtn = document.getElementById('choose-robot-btn');
 chooseRobotBtn.addEventListener('click', function() {

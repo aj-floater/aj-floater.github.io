@@ -1,0 +1,53 @@
+[
+  {
+    "name": "programs",
+    "type": "directory",
+    "contents": [
+      {
+        "name": "new_2",
+        "type": "file",
+        "description": "Best demonstration of the program"
+      },
+      {
+        "name": "chatgpt1",
+        "type": "file",
+        "description": "First program written by chatGPT"
+      },
+      {
+        "name": "chatgpt2",
+        "type": "file",
+        "description": "Second program written by chatGPT"
+      },
+      {
+        "name": "grand",
+        "type": "file",
+        "description": "Long program"
+      },
+      {
+        "name": "moving",
+        "type": "file",
+        "description": "Moving back and forth multiple times"
+      },
+      {
+        "name": "new",
+        "type": "file",
+        "description": "Demonstrating the pick and place possibilities"
+      },
+      {
+        "name": "post_dev_testing",
+        "type": "file",
+        "description": "Development testing"
+      },
+      {
+        "name": "smol",
+        "type": "file",
+        "description": "Small movement testing"
+      },
+      {
+        "name": "test",
+        "type": "file",
+        "description": "A test"
+      }
+    ]
+  }
+]

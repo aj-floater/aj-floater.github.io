@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  background-color: rgb(41, 41, 41);
+  background-color: #292929;
 }
 
 html { overflow: hidden; }
@@ -82,6 +82,7 @@ html { overflow: hidden; }
 
 .window {
   position: absolute;
+  background-color: #292929;
   border: 1px solid #414141;
 }
 

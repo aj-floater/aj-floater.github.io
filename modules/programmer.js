@@ -156,12 +156,30 @@ class Programmer extends Window {
     });
   }
 
+  generateDirectoryListing(dirListing, level = 0) {
+    var output = '';
+  
+    dirListing.forEach(function(file) {
+      if (file.type === 'directory') {
+        output += '&nbsp;'.repeat(level * 2) + file.name + '/' + "<br>";
+        output += programmer.generateDirectoryListing(file.contents, level + 1);
+      } else {
+        output += '<button class="program" data-filename="' + file.name + '">' + file.name + '<br><i style="font-size: small; color: #88c089; background-color: rgb(255, 255, 255, 0.1)";>' + file.description + "</i>" + '</button><br>';
+        output += '<div class="program-contents" style="display: none;" data-filename="' + file.name + '">' + file.contents + '</div>';
+      }
+    });
+  
+    return output;
+  }
+
   updateProgrammerDirectoryListing() {
     var dirListingContainer = document.getElementById('file-manager');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        dirListingContainer.innerHTML = this.responseText;
+        var dirListing = JSON.parse(this.responseText);
+
+        dirListingContainer.innerHTML = programmer.generateDirectoryListing(dirListing);
         var buttons = dirListingContainer.querySelectorAll('button');
         buttons.forEach(function(button) {
           button.addEventListener('click', function() {
@@ -178,7 +196,7 @@ class Programmer extends Window {
         });
       }
     };
-    xhr.open('GET', 'php/list_programs.php', true);
+    xhr.open('GET', '../uploads/file_list.json', true);
     xhr.send();
   }
 
@@ -360,15 +378,29 @@ run.forEach((run_btn) => {
 
 // Add event listener to the save button
 document.getElementById("save").addEventListener("click", function() {
-  var filename = document.getElementById("filename-input").value; // Get the filename from the input field
-  var content = document.getElementById("text-area").value; // Get the contents of the text area
-  var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-  xhr.open("POST", "../php/upload_program.php", true); // Set up the request
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Set the content type
-  xhr.send("filename=" + encodeURIComponent(filename) + "&content=" + encodeURIComponent(content)); // Set the data to be sent
-
-  // update file manager
-  programmer.updateProgrammerDirectoryListing();
+  var textarea = document.getElementById("text-area");
+  var textContent = textarea.value;
+  var filename = document.getElementById("filename-input").value;
+  
+  // Create a Blob with the text content
+  var blob = new Blob([textContent], { type: "text/plain" });
+  
+  // Create a temporary URL for the Blob
+  var url = URL.createObjectURL(blob);
+  
+  // Create a temporary <a> element and set its attributes
+  var link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  
+  // Append the <a> element to the document body
+  document.body.appendChild(link);
+  
+  // Programmatically click the link to trigger the download
+  link.click();
+  
+  // Clean up by revoking the temporary URL
+  URL.revokeObjectURL(url);
 });
 
 // Editor

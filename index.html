@@ -34,7 +34,8 @@
     <!-- HTML code with buttons -->
     <div class="centered-box" id="import-box">
       <button class="box-close-button" id="importCloseButton">&times;</button>
-      <h2>Import Files</h2>
+      <h1>Importing Files doesn't work in this version</h1>
+      <!-- <h2>Import Files</h2>
       <form id="uploadForm" method="post" enctype="multipart/form-data">
         Select files to upload (.stl or .urdf):
         <br>
@@ -47,15 +48,16 @@
       <div id="upload-error"></div>
       <h3>Uploaded Files:</h3>
       <button class="refresh" id="importRefreshButton">↻</button>
-      <div id="importListingContainer" class="directory-listing"></div>
+      <div id="importListingContainer" class="directory-listing"></div> -->
     </div>
 
     <div class="centered-box" id="robot-box">
       <button class="box-close-button" id="robotCloseButton">&times;</button>
-      <h2>Choose Robot</h2>
+      <h1>You cannot change the robot in this version</h1>
+      <!-- <h2>Choose Robot</h2>
       Click on a URDF file to load it into the viewport<br><br>
       <button class="refresh" id="robotRefreshButton">↻</button>
-      <div id="robotListingContainer" class="directory-listing"></div><br><br>
+      <div id="robotListingContainer" class="directory-listing"></div><br><br> -->
     </div>
 
     <div id="viewport" class="window">
@@ -68,6 +70,7 @@
     </div>
     
     <div id="programmer" class="window">
+      <div style="background-color: #292929; z-index: -1; position: absolute;" id="background"></div>
       <div class="top-programmer">
         <div id="file-manager"></div>
         <div id="text-editor">
@@ -76,7 +79,7 @@
       </div>
       <div id="button-bar">
         <input type="text" id="filename-input" placeholder="Enter filename">
-        <button class="programmer-button" id="save">Save</button>
+        <button class="programmer-button" id="save">Download</button>
         <button class="programmer-button" id="load">Load</button>
         <button class="programmer-button" id="run">Run</button>
         <div class="run-feedback"></div>
